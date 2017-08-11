@@ -122,7 +122,7 @@ public class PathMatcher extends AbstractMatcher {
 	 * @param dirOnly
 	 *            a boolean.
 	 * @return never null
-	 * @throws org.eclipse.jgit.errors.InvalidPatternException
+	 * @throws org.eclipse.jgit.errors.InvalidPatternException if any
 	 */
 	public static IMatcher createPathMatcher(String pattern,
 			Character pathSeparator, boolean dirOnly)

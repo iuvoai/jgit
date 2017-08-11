@@ -13,6 +13,7 @@ import org.eclipse.jgit.annotations.Nullable;
 import org.eclipse.jgit.internal.storage.pack.PackExt;
 import org.eclipse.jgit.internal.storage.reftable.ReftableConfig;
 import org.eclipse.jgit.lib.RefDatabase;
+import org.eclipse.jgit.lib.RepositoryShallow;
 
 /**
  * Git repository stored entirely in the local process memory.
@@ -297,4 +298,10 @@ public class InMemoryRepository extends DfsRepository {
 			return performsAtomicTransactions;
 		}
 	}
+
+	@Override
+	public RepositoryShallow getRepositoryShallowHandler() {
+		return new RepositoryShallow();
+	}
+
 }

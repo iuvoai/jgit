@@ -2116,4 +2116,13 @@ public abstract class Repository implements AutoCloseable {
 	public void autoGC(ProgressMonitor monitor) {
 		// default does nothing
 	}
+
+	/***
+	 * Get repository shallow handler.
+	 *
+	 * @return Handler for content of <code>$GITDIR/.shallow</code>.
+	 * @since 5.0
+	 */
+	public abstract RepositoryShallow getRepositoryShallowHandler();
+
 }
