@@ -68,6 +68,7 @@ import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.ProgressMonitor;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.lib.StoredConfig;
+import org.eclipse.jgit.transport.Depth;
 import org.eclipse.jgit.lib.SubmoduleConfig.FetchRecurseSubmodulesMode;
 import org.eclipse.jgit.revwalk.RevWalk;
 import org.eclipse.jgit.submodule.SubmoduleWalk;
@@ -102,6 +103,8 @@ public class FetchCommand extends TransportCommand<FetchCommand, FetchResult> {
 	private TagOpt tagOption;
 
 	private FetchRecurseSubmodulesMode submoduleRecurseMode = null;
+
+	private Depth depth = null;
 
 	private Callback callback;
 
@@ -233,6 +236,7 @@ public class FetchCommand extends TransportCommand<FetchCommand, FetchResult> {
 			transport.setDryRun(dryRun);
 			if (tagOption != null)
 				transport.setTagOpt(tagOption);
+			transport.setDepth(this.depth);
 			transport.setFetchThin(thin);
 			configure(transport);
 
@@ -487,6 +491,29 @@ public class FetchCommand extends TransportCommand<FetchCommand, FetchResult> {
 	 */
 	public FetchCommand setCallback(Callback callback) {
 		this.callback = callback;
+		return this;
+	}
+
+	/***
+	 * Get depth.
+	 *
+	 * @return Maximum number of commits to fetch. Can be null.
+	 * @since 5.0
+	 */
+	public Depth getDepth() {
+		return depth;
+	}
+
+	/***
+	 * Set depth to truncate history.
+	 *
+	 * @param depth
+	 *            Maximum number of commits to fetch. Null value is allowed.
+	 * @return {@code this}
+	 * @since 5.0
+	 */
+	public FetchCommand setDepth(Depth depth) {
+		this.depth = depth;
 		return this;
 	}
 }
