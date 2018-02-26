@@ -39,6 +39,10 @@
             <message_arguments>
                 <message_argument value="org.eclipse.jgit.storage.pack.PackStatistics.Accumulator"/>
                 <message_argument value="wants"/>
+        <filter comment="sparsecheckout is a feature available in GIT 1.9" id="336658481">
+            <message_arguments>
+                <message_argument value="org.eclipse.jgit.lib.ConfigConstants"/>
+                <message_argument value="CONFIG_KEY_SPARSECHECKOUT"/>
             </message_arguments>
         </filter>
     </resource>
